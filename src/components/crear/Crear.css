@@ -1,0 +1,12 @@
+.crear_contenedor{
+  margin-top: 70px;
+  margin-bottom: 70px;
+  min-height: 100vh;
+  height: auto;
+}
+.crear_tabla{
+  width: 60%;
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid gray;
+}

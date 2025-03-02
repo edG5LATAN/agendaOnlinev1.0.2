@@ -1,0 +1,15 @@
+.inicio_contenedor{
+  min-height: 100vh;
+  margin-top: 100px;
+  display: flex;
+}
+.inicio_portada{
+  width: 30%;
+  margin: 10px;
+}
+.inicio_contacto{
+  height: 100vh;
+  overflow-y: scroll;
+  width: 70%;
+  padding: 10px;
+}

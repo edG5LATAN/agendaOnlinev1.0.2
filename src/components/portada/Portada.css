@@ -1,0 +1,17 @@
+.portada_contenedor{
+  border: 1px solid ;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.portada_imagen{
+  width: auto;
+  height: 250px;
+}
+.portada_textos{
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
