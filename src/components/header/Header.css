@@ -1,0 +1,9 @@
+.header_contenedor{
+  justify-content: center;
+}
+@media (max-width:480px) {
+  .header_contenedor{
+    padding-left: 15px;
+    justify-content: left;
+  }
+}

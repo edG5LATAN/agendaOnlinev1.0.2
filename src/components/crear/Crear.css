@@ -10,3 +10,8 @@
   padding: 10px;
   border: 1px solid gray;
 }
+@media (max-width:480px) {
+  .crear_tabla{
+    width: 98%;
+  }
+}

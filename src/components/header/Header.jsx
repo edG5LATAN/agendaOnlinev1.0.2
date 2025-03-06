@@ -1,9 +1,10 @@
 import React from "react";
+import './Header.css'
 import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="d-flex justify-content-center fixed-top bg-body-tertiary pb-2 bg-opacity-75">
+    <div className="header_contenedor d-flex fixed-top bg-body-tertiary pb-2 bg-opacity-75">
       <ul className="nav nav-underline">
         <li className="nav-item">
           <Link

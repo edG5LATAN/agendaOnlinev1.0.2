@@ -97,6 +97,9 @@ function Crear() {
             <label for="floatingTikTok">TikTok</label>
           </div>
         </div>
+        <div className='d-flex justify-content-center'>
+          <button className='btn btn-success'>Crear</button>
+        </div>
       </div>
     </div>
   );

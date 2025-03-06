@@ -1,10 +1,21 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
 
 function BtnOpciones(props) {
+
+  const cokieNavigate=useNavigate()
    
-  const {icono,color,mensaje,titulo} = props
+  const {icono,color,mensaje,titulo,enviar} = props
+
+  const enviarOpcion=()=>{
+    if(enviar==null||enviar==""){
+      return
+    }else{
+      cokieNavigate(`/${enviar}`)
+    }
+  }
 
   const [show, setShow] = useState(false);
 
@@ -32,7 +43,7 @@ function BtnOpciones(props) {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant={color}>{titulo}</Button>
+          <Button onClick={enviarOpcion} variant={color}>{titulo}</Button>
         </Modal.Footer>
       </Modal>
     </>

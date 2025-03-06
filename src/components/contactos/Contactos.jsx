@@ -17,6 +17,7 @@ function Contactos() {
           mensaje={"si desea actualizar este contacto precione aceptar"}
           titulo={"actualizar"}
           color={"warning"}
+          enviar={"actualizar"}
         />
       </div>
       <div className="w-50">

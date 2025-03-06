@@ -96,6 +96,9 @@ function Actualizar() {
             <label for="floatingTikTok">TikTok</label>
           </div>
         </div>
+        <div className='d-flex justify-content-center'>
+          <button className='btn btn-primary'>Actualizar</button>
+        </div>
       </div>
     </div>
   )
