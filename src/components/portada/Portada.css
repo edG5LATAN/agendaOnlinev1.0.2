@@ -15,3 +15,7 @@
   align-items: center;
   text-align: center;
 }
+.portada_imagen{
+  width: 100%;
+  object-fit: cover;
+}

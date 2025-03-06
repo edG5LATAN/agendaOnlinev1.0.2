@@ -2,7 +2,7 @@ import React from "react";
 import "./Contactos.css";
 import BtnOpciones from "../btnOpciones/BtnOpciones";
 
-function Contactos() {
+function Contactos({data}) {
   return (
     <div className="contactos_contenedor mt-2 overflow-hidden d-flex w-100 border border-dark-subtle rounded-5">
       <div className="contactos_opciones">
@@ -22,20 +22,20 @@ function Contactos() {
       </div>
       <div className="w-50">
         <img
-          className="w-100 h-100"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVi6K_o9-qFCKHa6cATG2zRlrW1ua3md9F1M8z-thSW_vTKFjInyuDnz-Nrg6S368zCXY&usqp=CAU"
+          className="w-100 h-100 object-fit-fill"
+          src={data.imagen}
           alt="imagen de contactos"
         />
       </div>
       <div className="w-75 px-3">
-        <h2>nombre</h2>
-        <h4>telefono</h4>
+        <h2>{data.nombre}</h2>
+        <h4>Tel: {data.telefono}</h4>
         <div className="">
-          <p className="text-center" htmlFor="direccion">
+          <p className="text-center p-0 m-0" htmlFor="direccion">
             Direccion
           </p>
-          <p>ciudad</p>
-          <p>colonia</p>
+          <p className="p-0 m-0">{data.direccion.ciudad}</p>
+          <p className="p-0 m-0">{data.direccion.colonia}</p>
         </div>
         <div className="d-flex justify-content-around p-1">
           <a href="#" className="contactos_iconos">
