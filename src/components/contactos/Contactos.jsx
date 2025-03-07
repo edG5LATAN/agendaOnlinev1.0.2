@@ -20,22 +20,22 @@ function Contactos({data}) {
           enviar={"actualizar"}
         />
       </div>
-      <div className="w-50">
+      <div className="w-50 contactos_contenedor_imagen">
         <img
-          className="w-100 h-100 object-fit-fill"
+          className="w-100 h-100 "
           src={data.imagen}
           alt="imagen de contactos"
         />
       </div>
-      <div className="w-75 px-3">
-        <h2>{data.nombre}</h2>
-        <h4>Tel: {data.telefono}</h4>
+      <div className="w-75 px-3 contacto_datos_nuevo">
+        <h3>{data.nombre}</h3>
+        <h5>Tel: {data.telefono}</h5>
         <div className="">
-          <p className="text-center p-0 m-0" htmlFor="direccion">
+          <p className="text-center p-0 m-0 fw-bold" htmlFor="direccion">
             Direccion
           </p>
-          <p className="p-0 m-0">{data.direccion.ciudad}</p>
-          <p className="p-0 m-0">{data.direccion.colonia}</p>
+          <p className="p-0 m-0">ciudad: {data.direccion.ciudad}</p>
+          <p className="p-0 m-0">colonia: {data.direccion.colonia}</p>
         </div>
         <div className="d-flex justify-content-around p-1">
           <a href="#" className="contactos_iconos">
