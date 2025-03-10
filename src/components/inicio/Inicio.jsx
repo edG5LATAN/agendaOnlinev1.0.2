@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Inicio.css";
 import Portada from "../portada/Portada";
 import Contactos from '../contactos/Contactos'
-import { listaContactos } from "../../service/serviceCarrucel/Service";
+import { traerContactos } from "../../service/serviceBackend/ServiceBackend";
 
 
 
 function Inicio() {
 
+  const [data,setdata]=useState([])
 
+  useEffect(() => {
+    traerContactos(setdata);
+  }, [])
+  
 
 
   return (
@@ -18,9 +23,13 @@ function Inicio() {
       </div>
       <div className="inicio_contacto ">
         {
-          listaContactos.map((res,i)=>{
+          data!=[]&&data!=undefined
+          ?
+          data.map((res,i)=>{
             return <Contactos key={i} data={res} />
-          })
+          }) 
+          :
+          <p>cargando</p>
         }
       </div>
     </div>

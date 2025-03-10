@@ -2,6 +2,7 @@
   border: 1px solid ;
   border-radius: 10px;
   overflow: hidden;
+  background-color: lightyellow;
 }
 .portada_imagen{
   width: auto;

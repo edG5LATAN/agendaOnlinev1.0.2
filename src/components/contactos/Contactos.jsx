@@ -37,7 +37,7 @@ function Contactos({data}) {
           <p className="p-0 m-0">ciudad: {data.direccion.ciudad}</p>
           <p className="p-0 m-0">colonia: {data.direccion.colonia}</p>
         </div>
-        <div className="d-flex justify-content-around p-1">
+        <div className="mt-4 d-flex justify-content-around p-1">
           <a href="#" className="contactos_iconos">
             <i class="fs-4 bi bi-facebook"></i>
           </a>
