@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import './Header.css'
 import { Link } from "react-router-dom";
+import { Contexto } from "../../contexto/Contexto";
+import { buscarContactoPorNombre, logout } from "../../service/serviceBackend/ServiceBackend";
 
 function Header() {
+
+  const [nombre,setnombre]=useState("")
+  const {setlogin,setdata,update,setupdate} = useContext(Contexto);
+  
+  const buscarContacto=()=>{
+    if(nombre!=null&&nombre!=""){
+      buscarContactoPorNombre(nombre,setdata)
+    }else{
+      return
+    }
+  }
+
+  const cerrarCesion=()=>{
+    logout(setlogin)
+  }
+
   return (
     <div className="header_contenedor d-flex fixed-top bg-body-tertiary pb-2 bg-opacity-75">
       <ul className="nav nav-underline">
         <li className="nav-item">
           <Link
+            onClick={()=>setupdate(!update)}
             className="link-success nav-link active"
             aria-current="page"
-            to={"/"}
+            to={"/inicio"}
           >
             <small className="fst-italic">EDTecnology.com</small>
           </Link>
@@ -32,11 +51,11 @@ function Header() {
                 Crear
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link className="dropdown-item" to={"/actualizar"}>
                 Actualizar
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link className="dropdown-item" to={"/informacion"}>
                 Infomacion
@@ -48,17 +67,19 @@ function Header() {
             </li>
             <li>
               <div style={{width:"250px"}} className="p-1">
-                <form className="d-flex justify-content-between" role="search">
+                <div className="d-flex justify-content-between" role="search">
                   <input
                     className="form-control me-1 w-100"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
+                    value={nombre}
+                    onChange={(e)=>setnombre(e.target.value)}
                   />
-                  <button className="btn btn-outline-success" type="submit">
+                  <button onClick={buscarContacto} className="btn btn-outline-success" type="submit">
                     Search
                   </button>
-                </form>
+                </div>
               </div>
             </li>
 
@@ -66,7 +87,7 @@ function Header() {
         </li>
       </ul>
       <div className="position-absolute top-0 end-0">
-        <button class="m-1 btn btn-outline-danger" type="button">
+        <button onClick={cerrarCesion} class="m-1 btn btn-outline-danger" type="button">
           LogOut
         </button>
       </div>

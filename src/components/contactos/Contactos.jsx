@@ -2,7 +2,7 @@ import React from "react";
 import "./Contactos.css";
 import BtnOpciones from "../btnOpciones/BtnOpciones";
 
-function Contactos({data}) {
+function Contactos({data, update, setupdate}) {
   return (
     <div className="contactos_contenedor mt-2 overflow-hidden d-flex w-100 border border-dark-subtle rounded-5">
       <div className="contactos_opciones">
@@ -11,6 +11,10 @@ function Contactos({data}) {
           mensaje={"si desea borrar este contacto precione aceptar"}
           titulo={"borrar"}
           color={"danger"}
+          id={data.id}
+          enviar={"/"}
+          update={update}
+          setupdate={setupdate}
         />
         <BtnOpciones
           icono={"bi bi-pencil-square text-warning"}
@@ -18,6 +22,7 @@ function Contactos({data}) {
           titulo={"actualizar"}
           color={"warning"}
           enviar={"actualizar"}
+          id={data.id}
         />
       </div>
       <div className="w-50 contactos_contenedor_imagen">
@@ -28,7 +33,7 @@ function Contactos({data}) {
         />
       </div>
       <div className="w-75 px-3 contacto_datos_nuevo">
-        <h3>{data.nombre}</h3>
+        <h3>{data.contacto}</h3>
         <h5>Tel: {data.telefono}</h5>
         <div className="">
           <p className="text-center p-0 m-0 fw-bold" htmlFor="direccion">

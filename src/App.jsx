@@ -10,6 +10,8 @@ import SingUp from './components/signUp/SingUp.jsx'
 import Crear from './components/crear/Crear.jsx'
 import Actualizar from './components/actualizar/Actualizar.jsx'
 import Informacion from './components/informacion/Informacion.jsx'
+import { Datos } from './contexto/Contexto.jsx'
+import { ProtectedRouted } from './components/protected/Protected.jsx'
 
 
 function App() {
@@ -18,15 +20,19 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Header />
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/singnup' element={<SingUp />} /> 
-          <Route path='/' element={<Inicio />} />
-          <Route path='/crear' element={<Crear />} />
-          <Route path='/actualizar' element={<Actualizar />}/>
-          <Route path='/informacion' element={<Informacion />} />
-        </Routes>
+        <Datos>
+          <Header />
+          <Routes>
+            <Route index element={<Login />} />
+            <Route element={<ProtectedRouted />}>
+              <Route path='/inicio' element={<Inicio />} />
+              <Route path='/crear' element={<Crear />} />
+              <Route path='/actualizar/:id' element={<Actualizar />} />
+            </Route>
+            <Route path='/singnup' element={<SingUp />} />
+            <Route path='/informacion' element={<Informacion />} />
+          </Routes>
+        </Datos>
         <FooterCarrucel />
         <Footer />
       </BrowserRouter>

@@ -1,18 +1,67 @@
 import React, { useState } from "react";
 import "./Crear.css";
+import { crearNuevoContacto } from "../../service/serviceBackend/ServiceBackend";
+import { useNavigate } from "react-router-dom";
 
 function Crear() {
 
+  const urlRe=useNavigate()
   const [nombre,setnombre]=useState("")
   const [telefono,settelefono]=useState("")
-  const [imagen,setnimagen]=useState("")
+  const [imagen,setimagen]=useState("")
   const [ciudad,setciudad]=useState("")
   const [colonia,setcolonia]=useState("")
-  const [facebook,setfacebool]=useState("")
+  const [facebook,setfacebook]=useState("")
   const [whatsapp,setwhatsapp]=useState("")
-  const [instagran,setninstagran]=useState("")
-  const [tiktok,setntitok]=useState("")
+  const [instagran,setinstagran]=useState("")
+  const [tiktok,settiktok]=useState("")
 
+  const guardarContacto=()=>{
+    if(verificarData()){
+      let datos={
+        "contacto":nombre,
+        "telefono":telefono,
+        "imagen":imagen,
+        "direccion":{
+          "ciudad":ciudad,
+          "colonia":colonia,
+        },
+        "redes":{
+          "whatsapp":whatsapp,
+          "facebook":facebook,
+          "instagran":instagran,
+          "tiktok":tiktok,
+        },
+        "usuario":"admin"
+      }
+     crearNuevoContacto(datos,urlRe)
+     limpiar()
+    }else{
+      return
+    }
+
+  }
+
+  const verificarData=()=>{
+    if(nombre!=""&&telefono!=""&&imagen!=""&&ciudad!=""&&colonia!=""&&facebook!=""&&whatsapp!=""&&instagran!=""&&tiktok!=""){
+     return true;
+    }else{
+      alert("rellene todos los campos")
+      return false
+    }
+  }
+
+  const limpiar=()=>{
+    setnombre("")
+    settelefono("")
+    setimagen("")
+    setciudad("")
+    setcolonia("")
+    setwhatsapp("")
+    setfacebook("")
+    setinstagran("")
+    settiktok("")
+  }
 
 
   return (
@@ -48,6 +97,8 @@ function Crear() {
               className="form-control"
               id="floatingImagen"
               placeholder="ingree url imagen"
+              onChange={(e)=>setimagen(e.target.value)}
+              value={imagen}
             />
             <label for="floatingImagen">Url-Imagen</label>
           </div>
@@ -60,6 +111,8 @@ function Crear() {
               className="form-control"
               id="floatingCiudad"
               placeholder="ingrese su ciudad"
+              onChange={(e)=>setciudad(e.target.value)}
+              value={ciudad}
             />
             <label for="floatingCiudad">Ciudad</label>
           </div>
@@ -70,6 +123,8 @@ function Crear() {
               className="form-control"
               id="floatingColonia"
               placeholder="ingree su colonia"
+              onChange={(e)=>setcolonia(e.target.value)}
+              value={colonia}
             />
             <label for="floatingColonia">Colonia</label>
           </div>
@@ -83,6 +138,8 @@ function Crear() {
               className="form-control"
               id="floatingFacebook"
               placeholder="Facebook"
+              onChange={(e)=>setfacebook(e.target.value)}
+              value={facebook}
             />
             <label for="floatingFacebook">Facebook</label>
           </div>
@@ -92,6 +149,8 @@ function Crear() {
               className="form-control"
               id="floatingWhatsaap"
               placeholder="ingree el telefono"
+              onChange={(e)=>setwhatsapp(e.target.value)}
+              value={whatsapp}
             />
             <label for="floatingWhatsaap">Whatsapp</label>
           </div>
@@ -101,6 +160,8 @@ function Crear() {
               className="form-control"
               id="floatingInstagran"
               placeholder="ingree el telefono"
+              onChange={(e)=>setinstagran(e.target.value)}
+              value={instagran}
             />
             <label for="floatingInstagran">Instagran</label>
           </div>
@@ -110,12 +171,14 @@ function Crear() {
               className="form-control"
               id="floatingTikTok"
               placeholder="ingree el telefono"
+              onChange={(e)=>settiktok(e.target.value)}
+              value={tiktok}
             />
             <label for="floatingTikTok">TikTok</label>
           </div>
         </div>
         <div className='d-flex justify-content-center'>
-          <button className='btn btn-success'>Crear</button>
+          <button onClick={guardarContacto} className='btn btn-success'>Crear</button>
         </div>
       </div>
     </div>

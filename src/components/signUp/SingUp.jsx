@@ -6,6 +6,7 @@ function SingUp() {
   const [nombre, setnombre] = useState("");
   const [imagen, setimagen] = useState("");
   const [correo, setcorreo] = useState("");
+  const [direccion, setdireccion] = useState("");
   const [pass1, setpass1] = useState("");
   const [pass2, setpass2] = useState("");
   const [msj, setmsj] = useState("");
@@ -15,6 +16,7 @@ function SingUp() {
       nombre != "" &&
       imagen != "" &&
       correo != "" &&
+      direccion != "" &&
       pass1 != "" &&
       pass2 != ""
     ) {
@@ -85,54 +87,66 @@ function SingUp() {
                 </div>
               </div>
               <div className="mt-5">
-                <form className="mt-5 ">
+                <form className="mt-5 needs-validation" novalidate>
                   <div className="form-floating mb-2">
                     <input
                       aria-required
                       type="text"
-                      className="form-control"
-                      id="floatingInput"
+                      className="form-control text-lowercase"
+                      id="floatingNombre"
                       placeholder="ingrese su nombre"
                       value={nombre}
                       onChange={(e) => setnombre(e.target.value)}
                     />
-                    <label htmlFor="floatingInput">Nombre</label>
+                    <label htmlFor="floatingNombre">Nombre</label>
                   </div>
                   <div className="form-floating mb-2">
                     <input
                       required
                       type="imagen"
-                      className="form-control"
-                      id="floatingInput"
+                      className="form-control text-lowercase"
+                      id="floatingImagen"
                       placeholder="Ingresa url imagen"
                       value={imagen}
                       onChange={(e) => setimagen(e.target.value)}
                     />
-                    <label htmlFor="floatingInput">Ingresa url img</label>
+                    <label htmlFor="floatingImagen">Ingresa url img</label>
+                  </div>
+                  <div className="form-floating mb-2">
+                    <input
+                      required
+                      type="text"
+                      className="form-control text-lowercase"
+                      id="floatingDireccion"
+                      placeholder="Ingresa el correo"
+                      value={direccion}
+                      onChange={(e) => setdireccion(e.target.value)}
+                    />
+                    <label htmlFor="floatingDireccion">Ingresa deireccion</label>
                   </div>
                   <div className="form-floating mb-2">
                     <input
                       required
                       type="email"
-                      className="form-control"
-                      id="floatingInput"
-                      placeholder="name@example.com"
+                      className="form-control text-lowercase"
+                      id="floatingCorreo"
+                      placeholder="Ingresa el correo"
                       value={correo}
                       onChange={(e) => setcorreo(e.target.value)}
                     />
-                    <label htmlFor="floatingInput">Ingresa Correo</label>
+                    <label htmlFor="floatingCorreo">Ingresa Correo</label>
                   </div>
                   <div className="mb-2">
                     <div className="form-floating mb-1">
                       <input
                         type="password"
                         className="form-control"
-                        id="floatingPassword2"
+                        id="floatingPassword1"
                         placeholder="Password1"
                         value={pass1}
                         onChange={(e) => setpass1(e.target.value)}
                       />
-                      <label htmlFor="floatingPassword2">Password</label>
+                      <label htmlFor="floatingPassword1">Password</label>
                     </div>
                     <div className="form-floating ">
                       <input

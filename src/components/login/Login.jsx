@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
+import { Contexto } from "../../contexto/Contexto";
+import { loguearse } from "../../service/serviceBackend/ServiceBackend";
 
 function Login() {
+  const {setlogin,setUsuarioId}= useContext(Contexto)
   const page = useNavigate();
   const [correo,setcorreo]=useState("")
   const [clave,setclave]=useState("")
 
   const guardar=()=>{
      if(correo!=""&&clave!=""){
-       alertOk();
+       const data={
+        "correo":correo,
+        "clave":clave
+       }
+       loguearse(data,page,alertOk,alertInvalido,setlogin,setUsuarioId)
        return
      }else{
         alertInvalido()
@@ -58,7 +65,7 @@ function Login() {
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control text-lowercase"
                       placeholder="Correo"
                       aria-label="Username"
                       aria-describedby="addon-wrapping"
@@ -72,7 +79,7 @@ function Login() {
                     </span>
                     <input
                       type="password"
-                      className="form-control"
+                      className="form-control text-lowercase"
                       placeholder="Password"
                       aria-label="password"
                       aria-describedby="addon-wrapping"
@@ -81,7 +88,7 @@ function Login() {
                     />
                   </div>
                   <div className="d-flex justify-content-center">
-                    <button type="button" className="btn btn-success" onClick={guardar}>Login</button>                  
+                    <button  type="button" className="btn btn-success" onClick={guardar}>Login</button>                  
                   </div>
                 </form>
               </div>

@@ -2,18 +2,21 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
+import {borrarContacto} from '../../service/serviceBackend/ServiceBackend.js'
 
 function BtnOpciones(props) {
 
   const cokieNavigate=useNavigate()
    
-  const {icono,color,mensaje,titulo,enviar} = props
+  const {icono,color,mensaje,titulo,enviar,id,setupdate,update} = props
 
   const enviarOpcion=()=>{
-    if(enviar==null||enviar==""){
-      return
-    }else{
-      cokieNavigate(`/${enviar}`)
+    if(titulo=="borrar"){
+      borrarContacto(id,setupdate,update)
+      handleClose()
+    }
+    if(titulo=="actualizar"){
+      cokieNavigate(`/${enviar}/${id}`)
     }
   }
 
