@@ -7,18 +7,24 @@ import { buscarContactoPorNombre, logout } from "../../service/serviceBackend/Se
 function Header() {
 
   const [nombre,setnombre]=useState("")
-  const {setlogin,setdata,update,setupdate} = useContext(Contexto);
+  const {data,setlogin,setdata,update,setupdate,setUsuarioId} = useContext(Contexto);
   
   const buscarContacto=()=>{
     if(nombre!=null&&nombre!=""){
-      buscarContactoPorNombre(nombre,setdata)
+      buscarContactoPorNombre(nombre,setdata,data,setupdate,update) 
+      limpiar()
+      return
     }else{
       return
     }
   }
 
   const cerrarCesion=()=>{
-    logout(setlogin)
+   logout(setlogin,setUsuarioId,setdata)
+  }
+
+  const limpiar=()=>{
+    setnombre("")
   }
 
   return (

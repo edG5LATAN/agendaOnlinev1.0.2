@@ -56,17 +56,17 @@ export const actualizarContactoUnidad=(data,id,urlRe)=>{
   .catch(error=console.log(error))
 }
 
-export const buscarContactoPorNombre=(nombre,setdata)=>{
-   axios.get(urlBack+"contacto/buscarPorNombre/"+nombre)
-   .then(res=>{
-     setdata(res.data)
-   })
-   .catch(error=>console.log(error))
+export const buscarContactoPorNombre=(nombre,setdata,data,setupdate,update)=>{
+  const resultado = data.filter(item => item.contacto.toLowerCase().includes(nombre.toLowerCase()));  if(resultado!=[]){
+      setdata(resultado)
+      console.log(data)
+  }
 }
 
 export const loguearse=(data,page,alertOk,alertInvalido,setlogin,setUsuarioId)=>{
   axios.post(urlBack+"login/loguearse",data)
   .then(res=>{
+    console.log(res.data)
     setUsuarioId(res.data)
     setlogin(true)
     alertOk()
@@ -77,10 +77,12 @@ export const loguearse=(data,page,alertOk,alertInvalido,setlogin,setUsuarioId)=>
   })
 }
 
-export const logout=(setlogin)=>{
+export const logout=(setlogin,setUsuarioId,setdata)=>{
   axios.post(urlBack+"login/logout")
   .then(res=>{
     setlogin(false)
-    console.log(res.status)})
+    setUsuarioId("")
+    setdata([])
+  })
   .catch(error=>console.log(error))
 }

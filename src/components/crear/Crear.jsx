@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Crear.css";
 import { crearNuevoContacto } from "../../service/serviceBackend/ServiceBackend";
 import { useNavigate } from "react-router-dom";
+import { Contexto } from "../../contexto/Contexto";
 
 function Crear() {
 
   const urlRe=useNavigate()
+  const {usuarioId}=useContext(Contexto)
   const [nombre,setnombre]=useState("")
   const [telefono,settelefono]=useState("")
   const [imagen,setimagen]=useState("")
@@ -32,7 +34,7 @@ function Crear() {
           "instagran":instagran,
           "tiktok":tiktok,
         },
-        "usuario":"admin"
+        "usuario":usuarioId
       }
      crearNuevoContacto(datos,urlRe)
      limpiar()

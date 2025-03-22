@@ -51,7 +51,7 @@ function Login() {
               <div className="d-flex justify-content-center">
                 <div className="brand_logo_container">
                   <img
-                    src="https://st1.uvnimg.com/dims4/default/49d4acd/2147483647/thumbnail/1024x576/quality/75/?url=https%3A%2F%2Fuvn-brightspot.s3.amazonaws.com%2Fassets%2Fvixes%2Fl%2Fla_luna_es_mas_joven_de_lo_que_se_pensaba.jpg"
+                    src="https://i.gifer.com/5cdl.gif"
                     className="brand_logo object-fit-cover"
                     alt="Logo"
                   />
