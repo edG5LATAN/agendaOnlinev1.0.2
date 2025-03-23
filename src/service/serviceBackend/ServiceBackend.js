@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-const urlBack="http://localhost:8080/v1/"
+const urlBack=import.meta.env.VITE_API_BACKEND
 
 axios.defaults.withCredentials=true;
 
