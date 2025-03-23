@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { crearUsuario } from "../../service/serviceBackend/ServiceBackend";
 
 function SingUp() {
   const [nombre, setnombre] = useState("");
+  const [telefono, settelefono] = useState("");
   const [imagen, setimagen] = useState("");
   const [correo, setcorreo] = useState("");
   const [direccion, setdireccion] = useState("");
@@ -15,6 +17,7 @@ function SingUp() {
     if (
       nombre != "" &&
       imagen != "" &&
+      telefono != "" &&
       correo != "" &&
       direccion != "" &&
       pass1 != "" &&
@@ -23,14 +26,21 @@ function SingUp() {
 
       setmsj("lucias")
       if (pass1 === pass2&&pass1!=""&&pass2!="") {
+        const datos={
+          nombre,
+          correo,
+          telefono,
+          direccion,
+          imagen,
+          "clave":pass1
+        }
+        crearUsuario(datos,alertOk)
         setmsj("informacion copiada")
-        alertOk()
         limpiar()
         return;
       } else {
         setmsj("error de msj")
         alertError()
-        limpiar()
         return;
       }
     }else{
@@ -42,6 +52,10 @@ function SingUp() {
     setnombre("");
     setimagen("");
     setcorreo("");
+    setpass1("");
+    setpass2("");
+    settelefono("");
+    setdireccion("");
     setmsj("");
   };
 
@@ -103,6 +117,18 @@ function SingUp() {
                   </div>
                   <div className="form-floating mb-2">
                     <input
+                      aria-required
+                      type="text"
+                      className="form-control text-lowercase"
+                      id="floatingTelefono"
+                      placeholder="ingrese su telefono"
+                      value={telefono}
+                      onChange={(e) => settelefono(e.target.value)}
+                    />
+                    <label htmlFor="floatingTelefono">Telefono</label>
+                  </div>
+                  <div className="form-floating mb-2">
+                    <input
                       required
                       type="imagen"
                       className="form-control text-lowercase"
@@ -119,11 +145,11 @@ function SingUp() {
                       type="text"
                       className="form-control text-lowercase"
                       id="floatingDireccion"
-                      placeholder="Ingresa el correo"
+                      placeholder="Ingresa el direccion"
                       value={direccion}
                       onChange={(e) => setdireccion(e.target.value)}
                     />
-                    <label htmlFor="floatingDireccion">Ingresa deireccion</label>
+                    <label htmlFor="floatingDireccion">Ingresa direccion</label>
                   </div>
                   <div className="form-floating mb-2">
                     <input

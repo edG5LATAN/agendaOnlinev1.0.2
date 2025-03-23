@@ -48,12 +48,14 @@ export const contactoPorUnidad=(setdata,id)=>{
   .catch(error=>console.log(error))
 }
 
-export const actualizarContactoUnidad=(data,id,urlRe)=>{
-  axios.put(urlBack+"contacto/actualizar/"+id,data)
+export const actualizarContactoUnidad=(datos,id,urlRe)=>{
+  axios.put(urlBack+"contacto/actualizar/"+id,datos)
   .then(res=>{
     urlRe("/inicio")
   })
-  .catch(error=console.log(error))
+  .catch(error=>{
+    console.log(error)
+  })
 }
 
 export const buscarContactoPorNombre=(nombre,setdata,data,setupdate,update)=>{
@@ -66,7 +68,6 @@ export const buscarContactoPorNombre=(nombre,setdata,data,setupdate,update)=>{
 export const loguearse=(data,page,alertOk,alertInvalido,setlogin,setUsuarioId)=>{
   axios.post(urlBack+"login/loguearse",data)
   .then(res=>{
-    console.log(res.data)
     setUsuarioId(res.data)
     setlogin(true)
     alertOk()
@@ -85,4 +86,14 @@ export const logout=(setlogin,setUsuarioId,setdata)=>{
     setdata([])
   })
   .catch(error=>console.log(error))
+}
+
+export const crearUsuario=(datos,alertOk)=>{
+  axios.post(urlBack+"usuario/crear",datos)
+  .then(res=>{
+    alertOk()
+  })
+  .catch(error=>{
+    console.log(error)
+  })
 }

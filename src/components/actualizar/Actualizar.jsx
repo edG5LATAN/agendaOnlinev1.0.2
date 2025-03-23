@@ -54,7 +54,7 @@ function Actualizar() {
 
   const actualizarContacto = () => {
     if (id!=""&&id!=null) {
-      let datos = {
+      const datos = {
         "contacto": nombre,
         "telefono": telefono,
         "imagen": imagen,
@@ -67,8 +67,7 @@ function Actualizar() {
           "facebook": facebook,
           "instagran": instagran,
           "tiktok": tiktok,
-        },
-        "usuario": "admin"
+        }
       }
       actualizarContactoUnidad(datos,id,urlRe)
       limpiar()
